@@ -6,6 +6,7 @@
 touch reffile
 chown -R --reference=reffile ..
 rm reffile
+cd ${UNTURNED_REPO}
 
 # update Rocket
 wget https://ci.rocketmod.net/job/Rocket.Unturned%20Linux/lastSuccessfulBuild/artifact/Rocket.Unturned/bin/Release/Rocket.zip -O rocket.zip
