@@ -1,38 +1,40 @@
-FROM ubuntu
+FROM debian:jessie-slim
 LABEL maintainer="jesperbagge@gmail.com"
 
 # Define environment variables
-ENV UNTURNED_REPO /unturned
+ENV UNTURNED_REPO /gameserver
 ENV STEAM_USER anonymous
 ENV STEAM_PWD ""
-ENV INSTANCE_NAME testserver
+ENV INSTANCE_NAME Dockerserver
 
 # Create base folders
-RUN mkdir -p $UNTURNED_REPO
+RUN mkdir -p $UNTURNED_REPO/entrypoint $UNTURNED_REPO/Servers/$INSTANCE_NAME
 
 # Copy scripts into the steamcmd repo
-ADD scripts/* $UNTURNED_REPO
+ADD scripts/* $UNTURNED_REPO/entrypoint
 
 # Install necessary tools to run SteamCMD and Unturned
 RUN dpkg --add-architecture i386
 RUN apt-get update && apt-get install -y \
     lib32stdc++6 \
-    mono-runtime mono-reference-assemblies-2.0 \
-    libc6:i386 libgl1-mesa-glx:i386 libxcursor1:i386 libxrandr2:i386 \
-    libc6-dev-i386 libgcc-4.8-dev:i386 \
+    mono-runtime libmono2.0-cil \
+    libc6 libgl1-mesa-glx libxcursor1 libxrandr2 \
+    libc6-dev-i386 libgcc-4.8-dev \
+    curl \
     unzip \
-    wget \
- && apt-get clean
+    wget
 
 # Open ports to the container
+EXPOSE 27015/udp
 EXPOSE 27016/udp
 EXPOSE 27017/udp
+EXPOSE 27018/udp
 
-# Mount volume for persistence
-VOLUME $UNTURNED_REPO
+# Mount serverfolder for persistence
+VOLUME $UNTURNED_REPO/Servers/$INSTANCE_NAME
 
 # Set workdir
-WORKDIR $UNTURNED_REPO
+WORKDIR $UNTURNED_REPO/entrypoint
 
-# Update SteamCMD and Unturned
+# Download SteamCMD and Unturned
 CMD ./build-server.sh
