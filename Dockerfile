@@ -8,10 +8,10 @@ ENV STEAM_PWD ""
 ENV INSTANCE_NAME Dockerserver
 
 # Create base folders
-RUN mkdir -p $UNTURNED_REPO/entrypoint $UNTURNED_REPO/Servers/$INSTANCE_NAME
+RUN mkdir -p $UNTURNED_REPO/Servers/$INSTANCE_NAME
 
 # Copy scripts into the steamcmd repo
-ADD scripts/* $UNTURNED_REPO/entrypoint
+ADD scripts/* $UNTURNED_REPO
 
 # Install necessary tools to run SteamCMD and Unturned
 RUN dpkg --add-architecture i386
@@ -34,7 +34,7 @@ EXPOSE 27018/udp
 VOLUME $UNTURNED_REPO/Servers/$INSTANCE_NAME
 
 # Set workdir
-WORKDIR $UNTURNED_REPO/entrypoint
+WORKDIR $UNTURNED_REPO
 
 # Download SteamCMD and Unturned
 CMD ./build-server.sh
