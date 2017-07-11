@@ -4,7 +4,7 @@
 # there are shitloads of examples on how to do this on Github but I figured this one out
 # by myself and it seems to be the simplest one... :)
 touch reffile
-chown -R --reference=reffile .
+chown -R --reference=reffile ..
 rm reffile
 
 # update Rocket
@@ -19,7 +19,5 @@ chmod 755 start.sh
 ./update.sh ${STEAM_USER} ${STEAM_PWD}
 
 # start server
-# screen -S ${INSTANCE_NAME}
-# cd ${UNTURNED_REPO}/Scripts
 ./start.sh ${INSTANCE_NAME}
 
