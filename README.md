@@ -20,6 +20,6 @@ Each time you start the container Steam, Rocket and Unturned will update. You wi
 
 ## Example
 Start the container with the following command to mount your current directory as the folder to host your gamedata.
-```
+```docker
 docker run -it -v "$PWD":/gameserver/Servers/Dockerserver --env STEAM_USER=<username> --env STEAM_PWD=<password> ramdad/unturned:latest
 ```
