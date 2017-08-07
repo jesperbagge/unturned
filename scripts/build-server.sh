@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-# fix permissions recursively from /minecraft based on a temp reffile created at run-time
+# fix permissions recursively from /gameserver based on a temp reffile created at run-time
 # there are shitloads of examples on how to do this on Github but I figured this one out
 # by myself and it seems to be the simplest one... :)
 touch reffile
