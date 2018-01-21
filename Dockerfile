@@ -25,10 +25,8 @@ RUN apt-get update && apt-get install -y \
     wget
 
 # Open ports to the container
-EXPOSE 27015/udp
 EXPOSE 27016/udp
 EXPOSE 27017/udp
-EXPOSE 27018/udp
 
 # Mount serverfolder for persistence
 VOLUME $UNTURNED_REPO/Servers/$INSTANCE_NAME
