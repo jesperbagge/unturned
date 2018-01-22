@@ -13,10 +13,8 @@ Each time you start the container Steam, Rocket and Unturned will update. You wi
 /gameserver/Servers/Dockerserver
 
 ## Ports
-* 27015
 * 27016
 * 27017
-* 27018
 
 ## Example
 Start the container with the following command to mount your current directory as the folder to host your gamedata.
