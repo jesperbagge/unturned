@@ -7,7 +7,7 @@ To download the Unturned server, a valid Steam account has to be supplied. For t
 Alternatively, you can set up a new dummy Steam account without Steam Guard to use for download. The Steam account isn't used for running the server. Only to download the server files.
 
 ## Persistent game data
-Each time you start the container Steam, Rocket and Unturned will update. You will need to restart the container about once per week, given Unturneds frequent updates. The folder housing the game data can be mounted to the host file system to enable data persistence between restarts.
+Each time you start the container Steam, Rocket and Unturned will update. You will need to restart the container about once per week, given Unturneds frequent updates. The folder housing the game data can be mounted to the host file system to enable data persistence and convenient access to config files.
 
 ## Volume
 /gameserver/Servers/Dockerserver
