@@ -14,11 +14,15 @@ unzip -o rocket.zip
 rm rocket.zip
 
 # Fix permissions and run the update script to install Unturned 3
-cd Scripts
-chmod 755 ./Linux/update.sh
-chmod 755 ./Linux/start.sh
-./Linux/update.sh ${STEAM_USER} ${STEAM_PWD}
+cp Scripts/Linux/update.sh ./
+cp Scripts/Linux/start.sh ./
+cp Scripts/Linux/RocketLauncher.exe ./
+
+chmod 755 update.sh
+chmod 755 start.sh
+
+./update.sh ${STEAM_USER} ${STEAM_PWD}
 
 # start server
-./Linux/start.sh ${INSTANCE_NAME}
+./start.sh ${INSTANCE_NAME}
 
